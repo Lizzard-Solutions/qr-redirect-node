@@ -1,0 +1,69 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<style>
+#loading {
+    background: url('spinner.gif') no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+}
+
+#error {
+    background: url('scan.png') no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+}
+
+</style>
+</head>
+<body>
+<div id="loading"></div>
+<div id="error"></div>
+</body>
+</html>
+<script> 
+$('#error').hide();
+fetch("<%= url %>").then(function (response) {
+	// The API call was successful!
+	return response.text();
+}).then(function (res) {
+        var obj = {}
+        res = res.split(/\r?\n/)
+        for (var i = 0; i < res.length; i++) { 
+        var parts = res[i].split(",");
+        obj[parts[0]] = parts[1];
+}
+hideLoader()
+if (findVarHash(obj,window.location.hash)){
+window.location.replace(findVarHash(obj,window.location.hash))}
+else{
+$('#error').show()
+}
+}).catch(function (err) {	
+	console.warn('Something went wrong.', err);
+});
+
+
+
+
+ function findVarHash(obj, key) {
+  if (obj[key])
+    {return obj[key]}
+ 
+}
+
+function hideLoader() {
+    $('#loading').hide();
+}
+
+$(window).ready(hideLoader);
+setTimeout(hideLoader, 15 * 1000);
+</script>
