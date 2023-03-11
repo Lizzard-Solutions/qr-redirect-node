@@ -31,7 +31,7 @@
 </html>
 <script> 
 $('#error').hide();
-fetch("<%= url %>").then(function (response) {
+fetch("https://dl.dropboxusercontent.com/s/hxv053qgbv99sba/redirectTable.csv").then(function (response) {
 	// The API call was successful!
 	return response.text();
 }).then(function (res) {
