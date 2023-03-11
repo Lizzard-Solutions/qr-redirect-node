@@ -4,7 +4,9 @@
   "description": "package for redirecting qr-codes to a url",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "node index.js"
+
   },
   "author": "Lizzard Solutions",
   "license": "ISC",
@@ -14,5 +16,15 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "fs": "^0.0.1-security"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lizzard-Solutions/qr-redirect-node.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Lizzard-Solutions/qr-redirect-node/issues"
+  },
+  "homepage": "https://github.com/Lizzard-Solutions/qr-redirect-node#readme"
 }
